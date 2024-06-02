@@ -23,6 +23,13 @@ void init(void)
     TIM2_Cmd(ENABLE);
 }
 
+int exp(x,y){
+    for (int8_t i=0 ;i <=y ; i++){
+        x=x*x;
+    }
+
+}
+
 int getDiff(now,locked){
     int16_t x = now - locked;
     return x; 
@@ -31,7 +38,7 @@ int getDiff(now,locked){
 int getAngle(){
     int16_t a = getDiff(latitude,lockedLatitude);
     int16_t b = getDiff(longitude,lockedLongitude);
-    int16_t x =
+    int16_t x = a*100/b
 }
 
 int main(void)
