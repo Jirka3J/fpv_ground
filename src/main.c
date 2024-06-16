@@ -82,7 +82,7 @@ int main(void)
 
     while (1) {
         iteration = milis();
-        uint16_t x = arctan_fixed(8000,n);
+        uint32_t x = arctan_fixed(8000,n);
         //if (milis() - time > 10 ) {
         //    value=value+10;
         duty = toPWM(x);
