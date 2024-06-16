@@ -5,16 +5,15 @@
 #include "milis.h"
 //#include "delay.h"
 #include "uart1.h"
+
+
 #define SCALE 10000
-
-
-
 #define RAD_TO_DEG (180.0 / 3.14)
 
-    int32_t latitude = 495539350;
-    int32_t longitude = 171031850;
-    int32_t lockedLatitude = 495539350;
-    int32_t lockedLongitude = 171031850;
+    int32_t latitude = 49569913;
+    int32_t longitude = 17121208;
+    int32_t lockedLatitude = 49553935;
+    int32_t lockedLongitude = 17103185;
     uint16_t lastPWM = 0;
 
 void init(void){
@@ -30,17 +29,13 @@ void init(void){
     init_uart1();
 }
 
-// For future I CC = 500/5%DUTY >> 0% and CC = 1000/10%DUTY >> 100%
+// For future I CC = 500/5%DUTY >> 0%SERVO and CC = 1000/10%DUTY >> 100%SERVO
 
 
 int32_t getDiff(int32_t now,int32_t locked){
     return now - locked; 
 }
 
-int getAngle(){
-    int16_t decimal = getDiff(latitude,lockedLatitude)/getDiff(longitude,lockedLongitude);
-    return arctan_fixed(decimal,10);
-}
 
 
 uint16_t toPWM(int32_t degrees){
@@ -50,7 +45,7 @@ uint16_t toPWM(int32_t degrees){
         return degrees*833/10000+500;
     }
 }
-//
+
 int32_t arctan_fixed(int16_t x, uint8_t N) {
     int32_t arctan_x = 0;
     int32_t x_pow = x;  
@@ -68,32 +63,33 @@ int32_t arctan_fixed(int16_t x, uint8_t N) {
     return arctan_x*1800/3141;
 }
 
+int getAngle(){
+    int32_t a = getDiff(latitude,lockedLatitude);
+    int32_t b = getDiff(longitude,lockedLongitude);
+    int64_t decimal = b*SCALE/a;
+    int32_t x = arctan_fixed(decimal,10);
+    return x;
+}
 
-int main(void)
-{
+
+int main(void){
 
     uint32_t time = 0;
     uint16_t value = 500;
     uint16_t iteration = 0;
     uint8_t n = 10;
-    uint16_t duty;
 
     init();
 
     while (1) {
         iteration = milis();
-        uint32_t x = arctan_fixed(8000,n);
-        //if (milis() - time > 10 ) {
-        //    value=value+10;
-        duty = toPWM(x);
-        TIM2_SetCompare1(duty);
-        //    time = milis();
-        //    }
-        //if (value>1000) {value=500;}
+//        uint32_t x = arctan_fixed(8000,n);
+        lastPWM = toPWM(getAngle());
+        TIM2_SetCompare1(lastPWM);
         iteration = milis()-iteration;
         if (milis() - time > 1000 ) {
             time = milis();
-            printf("%d,%d",x,duty);
+            printf("%d,%d",getAngle(),lastPWM);
             printf("délka smyčky%d,\n",iteration);
         }
     }
