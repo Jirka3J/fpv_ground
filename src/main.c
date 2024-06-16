@@ -29,35 +29,28 @@ void init(void){
 
     init_uart1();
 }
-/*
-int exp(x,y){
-    for (int8_t i=0 ;i <=y ; i++){
-        x=x*x;
-    }
 
-}
+// For future I CC = 500/5%DUTY >> 0% and CC = 1000/10%DUTY >> 100%
 
-int getDiff(now,locked){
-    int16_t x = now - locked;
-    return x; 
+
+int32_t getDiff(int32_t now,int32_t locked){
+    return now - locked; 
 }
 
 int getAngle(){
-    int16_t a = getDiff(latitude,lockedLatitude);
-    int16_t b = getDiff(longitude,lockedLongitude);
-    int16_t x = a*100/b;
+    int16_t decimal = getDiff(latitude,lockedLatitude)/getDiff(longitude,lockedLongitude);
+    return arctan_fixed(decimal,10);
 }
-*/
 
 
 uint16_t toPWM(int32_t degrees){
-    if(degrees>6000){
+    if(degrees>6000|degrees<0){
         return lastPWM;
     }else{
         return degrees*833/10000+500;
     }
 }
-
+//
 int32_t arctan_fixed(int16_t x, uint8_t N) {
     int32_t arctan_x = 0;
     int32_t x_pow = x;  
@@ -74,6 +67,7 @@ int32_t arctan_fixed(int16_t x, uint8_t N) {
 
     return arctan_x*1800/3141;
 }
+
 
 int main(void)
 {
