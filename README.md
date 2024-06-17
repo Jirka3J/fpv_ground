@@ -9,7 +9,7 @@ Vývojový diagram funkce main
 <img title="a title" alt="TEXt Zadání" src="/vyvoják.jpg">
 
 
-** V hlavní smyčce pro demonstraci měním jednu souřadnici aby byla viditelná funkčnost výpočtů a ovladání serva
+## V hlavní smyčce pro demonstraci měním jednu souřadnici aby byla viditelná funkčnost výpočtů a ovladání serva
 
 ```c
 lastPWM = toPWM(getAngle());
@@ -22,7 +22,7 @@ lastPWM = toPWM(getAngle());
             }
         }
 ```
-**Mou hlavní pýchou je funkce arctan,
+## Mou hlavní pýchou je funkce arctan,
 kterou počítám zapomocí iterací v taylorově řadě, a s čísly v pevné řadové čárce.
 algoritmus je optimalizovaný tak aby výpočet trval 5ms.
 
