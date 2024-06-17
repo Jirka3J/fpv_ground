@@ -1,18 +1,8 @@
-STM8 (SPŠE) toolchain
+FPV Ground station
 ==============================
-
-* Toto je startovací strom zdrojových kódů a `Makefile` pro výuku Mikroprocesorové
-  techniky
-  s [STM8S](https://www.st.com/en/microcontrollers-microprocessors/stm8s-series.html).
-* Strom je určen pro překladač [SDCC](http://sdcc.sourceforge.net/) nebo 
-  [SDCC-gas](https://github.com/XaviDCR92/sdcc-gas).
-* Standardní knihovna pro práci s periferiemi 
-  [SPL](https://www.st.com/content/st_com/en/products/embedded-software/mcu-mpu-embedded-software/stm8-embedded-software/stsw-stm8069.html)
-  by měla být (z licenčních důvodů) stáhnou zvlášť ze stránek výrobce a použít
-  [patch](https://github.com/gicking/STM8-SPL_SDCC_patch) -- napište `make spl`.
-* Konkurence a inspirace: \
-  * <https://gitlab.com/wykys/stm8-tools>
-  * <https://github.com/matejkrenek/stm8-toolchain>
+Zadání
+-------------------------------
+<img title="a title" alt="TEXt Zadání" src="/iScreen Shoter - Google Chrome - 240617092447.jpg">
 
 Tři mejkfaily pro studenta
 ------------------------------------
