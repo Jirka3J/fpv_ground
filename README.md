@@ -4,8 +4,10 @@ Zadání
 -------------------------------
 <img title="a title" alt="TEXt Zadání" src="/iScreen Shoter - Google Chrome - 240617092447.jpg">
 
-Tři mejkfaily pro studenta
+Vývojový diagram funkce main
 ------------------------------------
+<img title="a title" alt="TEXt Zadání" src="/vyvoják.jpg">
+
 
 K dispozici jsou celkem tři `Makefile` v adresáři `.make`. Na začátku si musíte
 jeden z nich vybrat:
