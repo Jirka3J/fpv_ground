@@ -9,19 +9,54 @@ Vývojový diagram funkce main
 <img title="a title" alt="TEXt Zadání" src="/vyvoják.jpg">
 
 
-K dispozici jsou celkem tři `Makefile` v adresáři `.make`. Na začátku si musíte
-jeden z nich vybrat:
+** V hlavní smyčce pro demonstraci měním jednu souřadnici aby byla viditelná funkčnost výpočtů a ovladání serva
 
-```bash
-make sdcc       # nebo
-make sdcc-gas   # nebo
-make sdccrm     # nebo
+```c
+lastPWM = toPWM(getAngle());
+        TIM2_SetCompare1(lastPWM);
+        iteration = milis()-iteration;
+        if (milis() - time > 10 ) {
+            latitude += 10;
+            if (latitude-40000> lockedLatitude){
+                latitude = lockedLatitude;
+            }
+        }
+```
+**Mou hlavní pýchou je funkce arctan,
+kterou počítám zapomocí iterací v taylorově řadě, a s čísly v pevné řadové čárce.
+algoritmus je optimalizovaný tak aby výpočet trval 5ms.
+
+
+```c
+int32_t arctan_fixed(int32_t x, uint8_t N) {
+    int64_t arctan_x = 0;
+    int32_t x_pow = x;  
+
+    for (uint8_t n = 0; n < N; n++) {
+        int32_t term = x_pow / (2 * n + 1);
+        if (n % 2 == 0) {
+            arctan_x += term;
+        } else {
+            arctan_x -= term;
+        }
+        x_pow = (x_pow * x / SCALE) * x / SCALE;
+    }
+
+    return arctan_x;
+}
+int32_t arctan(int32_t x, uint8_t N) {
+    if (x > SCALE||x<-SCALE) {
+        int64_t reciprocal = SCALE2/x;  
+        return (15707 - arctan_fixed(reciprocal, N))*1800/3141;
+    } else {
+        return arctan_fixed(x, N)*1800/3141;
+    }
+}
 ```
 
-**Pokud si nejste jistí, co vybrat, vyberte si `sdcc`** a napište
-```bash
-make sdcc
-```
+
+
+
 Schéma zapojení
 ------------------------------------
 <img title="a title" alt="TEXt Zadání" src="/iScreen Shoter - Acrobat - 240617092623.jpg">
