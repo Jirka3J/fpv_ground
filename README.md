@@ -24,7 +24,7 @@ lastPWM = toPWM(getAngle());
 ```
 ## Mou hlavní pýchou je funkce arctan,
 kterou počítám zapomocí iterací v taylorově řadě, a s čísly v pevné řadové čárce.
-algoritmus je optimalizovaný tak aby výpočet trval 5ms.
+algoritmus je optimalizovaný tak aby výpočet trval 5ms. Pro správnou funkci ještě musíme hodnoty větší než jedna inverovat a výsledek přepočítat
 
 
 ```c
@@ -53,6 +53,36 @@ int32_t arctan(int32_t x, uint8_t N) {
     }
 }
 ```
+## Převod souřadnic na úhel
+zanedbávám zakřivení země protože v fpv se lzed pohybovat jeno v určitém rozsahu, který je dostatečně nízký aby jsme ho mohli zanedbat.
+případně pokud by jste používali kartézskou soustavu souřadnic tak není co zanedbávat a výpočet by byl relativně přesný.
+```c
+int32_t getDiff(int32_t now,int32_t locked){
+    return now - locked; 
+}
+
+int getAngle(){
+    int32_t a = getDiff(latitude,lockedLatitude);
+    int32_t b = getDiff(longitude,lockedLongitude);
+    int64_t decimal = a*SCALE/b;
+    int32_t x = arctan(decimal,20);
+    return x;
+}
+```
+
+## převod na duty cycle
+```c
+uint16_t toPWM(int32_t degrees){
+    if(degrees>6000||degrees<0){
+        return lastPWM;
+    }else{
+        return degrees*833/10000+500;
+    }
+}
+```
+
+## Na UART kvůli debugu vypisuji úhel ve stupních duty cycle a čas výpočtu
+
 
 
 
