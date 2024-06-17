@@ -108,7 +108,5 @@ Závislosti
   pro `flash` na Windows.
 * ([stm8flash](https://github.com/vdudouyt/stm8flash) pro `flash2`)
 
-### Na Windows
 
-[`choco`](https://chocolatey.org/)` install git make vscode mingw`
 
