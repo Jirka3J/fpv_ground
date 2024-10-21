@@ -6,12 +6,12 @@ Zadání
 
 Blokové schéma
 ------------------------------------
-<img title="a title" alt="TEXt Zadání" src="/vyvoják.jpg">
+<img title="a title" alt="Blokové schéma" src="/iScreen Shoter - Acrobat - 241021132707.jpg">
 
 
 Vývojový diagram funkce main
 ------------------------------------
-<img title="a title" alt="vývojový diagram" src="/iScreen Shoter - Acrobat - 241021132707.jpg">
+<img title="a title" alt="vývojový diagram" src="/vyvoják.jpg">
 
 
 ## V hlavní smyčce pro demonstraci měním jednu souřadnici aby byla viditelná funkčnost výpočtů a ovladání serva
