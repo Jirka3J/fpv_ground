@@ -4,9 +4,14 @@ Zadání
 -------------------------------
 <img title="a title" alt="TEXt Zadání" src="/iScreen Shoter - Google Chrome - 240617092447.jpg">
 
-Vývojový diagram funkce main
+Blokové schéma
 ------------------------------------
 <img title="a title" alt="TEXt Zadání" src="/vyvoják.jpg">
+
+
+Vývojový diagram funkce main
+------------------------------------
+<img title="a title" alt="vývojový diagram" src="/vyvoják.jpg">
 
 
 ## V hlavní smyčce pro demonstraci měním jednu souřadnici aby byla viditelná funkčnost výpočtů a ovladání serva
