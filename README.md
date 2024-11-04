@@ -97,6 +97,12 @@ Schéma zapojení
 <img title="a title" alt="TEXt Zadání" src="/iScreen Shoter - Acrobat - 240617092623.jpg">
 
 
+Závěr
+------------------------------------
+Projekt funguje dle očekávání. Na základě vstupu kartézských souřadnic přepočítává na úhel. Jako výstup je zapojené servo ,které otáčí anténou, podle úhlu který počítá mikroprocesor. Pro přepočet používám funkci arctangens kterou jsem napsal zapomocí iteračního algoritmu.
+
+
+
 
 
 Závislosti
