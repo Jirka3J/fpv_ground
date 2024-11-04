@@ -11,7 +11,7 @@ Blokové schéma
 
 Vývojový diagram funkce main
 ------------------------------------
-<img title="a title" alt="vývojový diagram" src="/vyvoják.jpg">
+<img title="a title" alt="vývojový diagram" src="/Flowchart-_1_.svg">
 
 
 ## V hlavní smyčce pro demonstraci měním jednu souřadnici aby byla viditelná funkčnost výpočtů a ovladání serva
